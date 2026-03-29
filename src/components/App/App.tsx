@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import css from './App.module.css'
+import { useState} from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import toast, { Toaster } from 'react-hot-toast'
 import fetchMovies from '../../services/movieService';
