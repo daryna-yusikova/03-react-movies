@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import css from './SearchBar.module.css'
 interface SearchBar {
     onSubmit: (submitQuery:string) => void
@@ -7,10 +8,17 @@ interface SearchBar {
 
 
 export default function SearchBar({ onSubmit }: SearchBar) {
-    function handleSubmit(formData:FormData) {
-        const submitQuery = formData.get('query') as string
-        onSubmit(submitQuery.trim());
+  function handleSubmit(formData: FormData) {
+    const submitQuery = (formData.get('query') as string).trim()
+
+    if (!submitQuery) {
+      toast.error('Please enter your search query.')
+      return
     }
+
+    onSubmit(submitQuery)
+  }
+
 
     return <header className={css.header}>
   <div className={css.container}>
